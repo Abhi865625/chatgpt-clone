@@ -8,8 +8,19 @@ import rocket from "./assets/rocket.svg";
 import sendBtn from "./assets/send.svg";
 import userIcon from "./assets/user-icon.png";
 import gptImgLogo from "./assets/chatgptLogo.svg";
+import { useState } from "react";
+import { sendMsgToOpenAI } from "./openai";
 
 function App() {
+  const [input, setInput] = useState("");
+
+  const [message, setMessage] = useState("");
+
+  const handleSend = async () => {
+    const res = await sendMsgToOpenAI(input);
+    console.log(res);
+  };
+
   return (
     <div className="App">
       <div className="sideBar">
@@ -92,8 +103,15 @@ function App() {
         </div>
         <div className="chatFooter">
           <div className="inp">
-            <input type="text" placeholder="Send a message" />
-            <button className="send">
+            <input
+              type="text"
+              placeholder="Send a message"
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+            />
+            <button className="send" onClick={handleSend}>
               <img src={sendBtn} alt="send" />
             </button>
           </div>
