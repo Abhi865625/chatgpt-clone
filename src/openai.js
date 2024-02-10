@@ -7,7 +7,7 @@ const openai = new OpenAI({
 
 export async function sendMsgToOpenAI(message) {
   try {
-    const response = await openai.createCompletion({
+    const response = await openai.chat.completions.create({
       engine: "text-davinci-003",
       prompt: message,
       temperature: 0.7,

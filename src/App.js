@@ -14,7 +14,7 @@ import { sendMsgToOpenAI } from "./openai";
 function App() {
   const [input, setInput] = useState("");
 
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
 
   const handleSend = async () => {
     const res = await sendMsgToOpenAI(input);
