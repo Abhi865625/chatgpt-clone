@@ -1,4 +1,4 @@
-const { OpenAI } = require("openai");
+const OpenAI = require("openai");
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -7,8 +7,8 @@ const openai = new OpenAI({
 
 export async function sendMsgToOpenAI(message) {
   try {
-    const response = await openai.chat.completions.create({
-      engine: "text-davinci-003",
+    const response = await openai.completions.create({
+      model: "gpt-3.5-turbo-instruct",
       prompt: message,
       temperature: 0.7,
       maxTokens: 256,
